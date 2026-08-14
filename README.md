@@ -230,3 +230,42 @@ def practical_8():
 if __name__ == "__main__":
     practical_8()
 ExplanationBitmap typography uses 2D arrays (matrices of $1$s and $0$s) to define font glyphs. Here, each character is mapped out in a $5 \times 5$ grid. The draw_pixel_block function iterates through the matrix rows and columns, drawing scaled pixel blocks (scale=6) wherever a $1$ appears. This demonstrates how raster graphics engines render custom vector/bitmap typography using basic loop iteration and pixel plotting.
+
+
+
+
+
+
+
+
+
+BRESENHAM'S LINE DRAWING ALGORITHM
+
+
+
+function bresenham(x0, y0, x1, y1):
+    // Determine absolute differences and step directions
+    dx = abs(x1 - x0)
+    dy = abs(y1 - y0)
+    sx = 1 if x0 < x1 else -1
+    sy = 1 if y0 < y1 else -1
+
+    // Initialize error term (for slope ≤ 1 version)
+    err = dx - dy
+
+    while true:
+        plot(x0, y0)
+        if x0 == x1 and y0 == y1:
+            break
+        e2 = 2 * err
+        if e2 > -dy:
+            err -= dy
+            x0 += sx
+        if e2 < dx:
+            err += dx
+            y0 += sy
+
+
+
+
+
